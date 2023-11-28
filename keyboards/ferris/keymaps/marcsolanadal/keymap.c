@@ -17,8 +17,8 @@ enum {
 #define SHSP LSFT_T(KC_SPC) // Shift on hold, space on tap
 
 // Layer transition functions
-#define EXT TO(_EXTEND)
-#define SYM TO(_SYMBOLS)
+#define EXT MO(_EXTEND)
+#define SYM MO(_SYMBOLS)
 
 tap_dance_action_t tap_dance_actions[] = {
     [TD_CBR] = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
@@ -46,7 +46,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                      EXT,     SHSP,            SHSP,    SYM
     ),
 
-
     /* Extend
      * .----------------------------------.          .----------------------------------.
      * | Esc  |  Up  | Find | Down | Ins  |          | Pgup | Home | End  | Prnt | Caps |
@@ -55,14 +54,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------|          |------+------+------+------+------|
      * | Undo | Cut  | Copy | Pste | MEH  |          | Pgdn | Bspc | Shft | App  | Pscr |
      * `--------------------.------+------|          |------+------.--------------------'
-     *                      | Ext  |      |          | Ent  | Lead |
+     *                      |      |      |          | Ent  | Rep  |
      *                      `-------------'          `-------------'
      */
     [_EXTEND] = LAYOUT(
         KC_ESC,         DT_UP,          LCMD(KC_F),     DT_DOWN,         KC_INS,            KC_PGUP,  KC_HOME,  KC_END,         DT_PRNT,   CW_TOGG,
         OSM(MOD_LALT),  OSM(MOD_LCTL),  OSM(MOD_LGUI),  OSM(MOD_LSFT),   KC_TAB,            KC_LEFT,  KC_DOWN,  KC_UP,          KC_RGHT,   KC_DEL,
         LCMD(KC_Z),     LCMD(KC_X),     LCMD(KC_C),     LCMD(KC_V),      OSM(MOD_MEH),      KC_PGDN,  KC_BSPC,  OSM(MOD_RSFT),  KC_APP,    KC_PSCR,
-                                                        XXXXXXX,         XXXXXXX,           KC_ENT,   XXXXXXX
+                                                        XXXXXXX,         XXXXXXX,           KC_ENT,   QK_REP
     ),
 
     /* Symbols
@@ -73,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------|          |------+------+------+------+------|
      * |  ^   |  _   |  %   |  $   |  ~   |          |  0   |  1   |  2   |  3   |  /   |
      * `--------------------.------+------|          |------+------.--------------------'
-     *                      |  |   |  `   |          |      | Sym  |
+     *                      |  |   |  `   |          |      |      |
      *                      `-------------'          `-------------'
      */
     [_SYMBOLS] = LAYOUT(
